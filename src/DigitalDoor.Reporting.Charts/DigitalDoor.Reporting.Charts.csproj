@@ -1,0 +1,35 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFrameworks>net6.0;net8.0;net9.0;net10.0</TargetFrameworks>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+		<PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+		<Authors>Sergi Ortiz Gomez</Authors>
+		<Company>DIGITAL DOOR Pty Ltd</Company>
+		<Description>Charts as SVG or Image</Description>
+		<Copyright>DIGITAL DOOR Pty Ltd 2025</Copyright>
+		<PackageProjectUrl>https://digitaldoor.com.au/</PackageProjectUrl>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<PackageTags>reporting; pdf, blazor; blazor webaassembly; blazor server; MVC; webapi; console</PackageTags>
+		<RepositoryUrl>https://github.com/drualcman/DigitalDoor.Reporting.Presenters.Images</RepositoryUrl>
+		<PackageReleaseNotes>
+			2025-12-15: First release.
+		</PackageReleaseNotes>
+		<Version>1.17.70</Version>
+		<Title>Generate charts</Title>
+		<RepositoryType>git</RepositoryType>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Include="..\..\LICENSE.txt">
+			<Pack>True</Pack>
+			<PackagePath></PackagePath>
+		</None>
+		<None Include="..\..\README.md">
+			<Pack>True</Pack>
+			<PackagePath></PackagePath>
+		</None>
+	</ItemGroup>
+
+</Project>
