@@ -37,6 +37,54 @@ public static class SampleData
         }, new List<string> { "January", "February", "March", "April", "May", "June", "July" });
     }
 
+    public static List<ChartSegment> CreateMonthlyVisits()
+    {
+        return new List<ChartSegment>
+        {
+            new ChartSegment("Jan", 120),
+            new ChartSegment("Feb", 180),
+            new ChartSegment("Mar", 150),
+            new ChartSegment("Apr", 260),
+            new ChartSegment("May", 310),
+            new ChartSegment("Jun", 240),
+            new ChartSegment("Jul", 380)
+        };
+    }
+
+    public static List<ChartSegment> CreateMonthlyBalance()
+    {
+        return new List<ChartSegment>
+        {
+            new ChartSegment("Q1 2026", 40),
+            new ChartSegment("Q2 2026", -25),
+            new ChartSegment("Q3 2026", 15),
+            new ChartSegment("Q4 2026", 65)
+        };
+    }
+
+    public static List<StarRatingItem> CreateRatings()
+    {
+        return new List<StarRatingItem>
+        {
+            new StarRatingItem("Excellent", 5, 128),
+            new StarRatingItem("Very good", 4, 64),
+            new StarRatingItem("Average", 3, 22),
+            new StarRatingItem("Poor", 2, 9),
+            new StarRatingItem("Terrible", 1, 4)
+        };
+    }
+
+    public static List<StarRatingItem> CreateBranchRatings()
+    {
+        return new List<StarRatingItem>
+        {
+            new StarRatingItem("Tagum", 4.6, 1204),
+            new StarRatingItem("Asuncion", 3.5, 486),
+            new StarRatingItem("Davao & Mati", 4.25, 312),
+            new StarRatingItem("New Corella with a long name", 2.8, 75)
+        };
+    }
+
     public static ColumnWithLineChartData CreateColumnsWithLines()
     {
         return new ColumnWithLineChartData(new List<ColumnDataItem>

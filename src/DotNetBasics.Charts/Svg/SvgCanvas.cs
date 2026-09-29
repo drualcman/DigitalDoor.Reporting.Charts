@@ -36,9 +36,16 @@ internal sealed class SvgCanvas
     {
         if (points.Count > 1)
         {
-            string pointList = string.Join(" ", points.Select(point => $"{SvgNumber.Format(point.X)},{SvgNumber.Format(point.Y)}"));
-            Elements.AppendLine($"<polyline points=\"{pointList}\" fill=\"{SvgEscaper.Escape(fill)}\"{stroke.ToAttributes()} " +
+            Elements.AppendLine($"<polyline points=\"{SvgPointList.Format(points)}\" fill=\"{SvgEscaper.Escape(fill)}\"{stroke.ToAttributes()} " +
                 "stroke-linejoin=\"round\" stroke-linecap=\"round\" />");
+        }
+    }
+
+    public void Polygon(IReadOnlyList<SvgPoint> points, SvgPolygonStyle style)
+    {
+        if (points.Count > 2)
+        {
+            Elements.AppendLine($"<polygon points=\"{SvgPointList.Format(points)}\"{style.ToAttributes()} />");
         }
     }
 
@@ -62,6 +69,12 @@ internal sealed class SvgCanvas
         Definitions.Append($"<linearGradient id=\"{id}\" gradientUnits=\"userSpaceOnUse\" x1=\"0\" y1=\"{SvgNumber.Format(top)}\" " +
             $"x2=\"0\" y2=\"{SvgNumber.Format(bottom)}\"><stop offset=\"0\" stop-color=\"{SvgEscaper.Escape(topColour)}\" />" +
             $"<stop offset=\"1\" stop-color=\"{SvgEscaper.Escape(bottomColour)}\" /></linearGradient>");
+    }
+
+    public void RectangleClipPath(string id, double x, double y, double width, double height)
+    {
+        Definitions.Append($"<clipPath id=\"{SvgEscaper.Escape(id)}\"><rect x=\"{SvgNumber.Format(x)}\" y=\"{SvgNumber.Format(y)}\" " +
+            $"width=\"{SvgNumber.Format(Math.Max(0, width))}\" height=\"{SvgNumber.Format(Math.Max(0, height))}\" /></clipPath>");
     }
 
     public string ToDocument(double width, double height, string fontFamily)

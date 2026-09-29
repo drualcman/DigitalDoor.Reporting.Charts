@@ -34,10 +34,7 @@ internal sealed class LineChartBuilder
         LegendRowsWriter legendWriter = CreateLegendWriter(series);
         double totalHeight = Parameters.Height + (legendWriter is null ? 0 : LegendGap + legendWriter.Height);
         SvgCanvas canvas = new SvgCanvas();
-        if (!IsTransparent(Parameters.BackgroundColor))
-        {
-            canvas.Rect(0, 0, Parameters.Width, totalHeight, Parameters.BackgroundColor);
-        }
+        ChartBackground.Write(canvas, Parameters.BackgroundColor, Parameters.Width, totalHeight);
         LineGridWriter.Write(canvas, area, categoryAxis, Parameters);
         LineSeriesWriter.Write(canvas, area, series, Parameters);
         LineAxesWriter.Write(canvas, area, categoryAxis, Parameters);
@@ -57,11 +54,5 @@ internal sealed class LineChartBuilder
             result = new LegendRowsWriter(entries, Parameters.FontSize, Parameters.Width - MinimumMarginRight);
         }
         return result;
-    }
-
-    private static bool IsTransparent(string colour)
-    {
-        return string.IsNullOrWhiteSpace(colour) || colour.Equals("transparent", StringComparison.OrdinalIgnoreCase) ||
-            colour.Equals("none", StringComparison.OrdinalIgnoreCase);
     }
 }

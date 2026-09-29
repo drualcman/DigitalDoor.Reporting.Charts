@@ -68,7 +68,9 @@ public class SvgDocumentTests
             new PieChart(null).GenerateSvg(),
             new LineChart(null).GenerateSvg(),
             new LineChart(new LineChartData(new List<LineData>())).GenerateSvg(),
-            new ColumnWithLineChart(new ColumnWithLineChartData(new List<ColumnDataItem>())).GenerateSvg()
+            new ColumnWithLineChart(new ColumnWithLineChartData(new List<ColumnDataItem>())).GenerateSvg(),
+            new AreaChart(null).GenerateSvg(),
+            new StarRatingChart(null).GenerateSvg()
         };
 
         foreach (string svg in svgs)

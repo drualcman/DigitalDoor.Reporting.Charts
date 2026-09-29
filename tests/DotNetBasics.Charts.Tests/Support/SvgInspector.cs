@@ -26,4 +26,12 @@ public static class SvgInspector
     {
         return double.Parse((string)element.Attribute(attributeName), CultureInfo.InvariantCulture);
     }
+
+    public static List<(double X, double Y)> ReadPoints(XElement element)
+    {
+        return ((string)element.Attribute("points")).Split(' ')
+            .Select(point => point.Split(','))
+            .Select(coordinates => (double.Parse(coordinates[0], CultureInfo.InvariantCulture), double.Parse(coordinates[1], CultureInfo.InvariantCulture)))
+            .ToList();
+    }
 }

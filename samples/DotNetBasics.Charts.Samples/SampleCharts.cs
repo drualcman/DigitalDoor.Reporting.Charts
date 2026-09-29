@@ -1,3 +1,4 @@
+using System.Globalization;
 using DotNetBasics.Charts.Models;
 
 namespace DotNetBasics.Charts.Samples;
@@ -31,7 +32,21 @@ public static class SampleCharts
                 visibleMinPointLine: true))).GenerateSvg(),
             ["column-with-line"] = new ColumnWithLineChart(SampleData.CreateColumnsWithLines()).GenerateSvg(),
             ["column-with-line-all"] = new ColumnWithLineChart(SampleData.CreateColumnsWithLines(),
-                new ColumnWithLineChartParams { BarWidth = 30, Spacing = 25, ShowSecondaryValues = true }).GenerateSvg()
+                new ColumnWithLineChartParams { BarWidth = 30, Spacing = 25, ShowSecondaryValues = true }).GenerateSvg(),
+            ["area"] = new AreaChart(SampleData.CreateMonthlyVisits()).GenerateSvg(),
+            ["area-values-title"] = new AreaChart(SampleData.CreateMonthlyVisits(), new AreaChartParams(areaFill: "#59A14F",
+                lineStroke: "#2E7D32", showValues: true, stepsY: 5, title: "Monthly visits")).GenerateSvg(),
+            ["area-negative-rotated"] = new AreaChart(SampleData.CreateMonthlyBalance(), new AreaChartParams(width: 400, height: 260,
+                areaFill: "#E15759", lineStroke: "#B22222", rotatedLabels: true, showValues: true,
+                valueFormatter: value => $"{value.ToString("0", CultureInfo.InvariantCulture)} k")).GenerateSvg(),
+            ["area-single"] = new AreaChart(new[] { new ChartSegment("Only month", 42) }, new AreaChartParams(width: 300, height: 200,
+                showValues: true)).GenerateSvg(),
+            ["stars"] = new StarRatingChart(SampleData.CreateRatings()).GenerateSvg(),
+            ["stars-percentage-title"] = new StarRatingChart(SampleData.CreateRatings(), new StarRatingParams(showPercentage: true,
+                title: "Customer reviews")).GenerateSvg(),
+            ["stars-partial"] = new StarRatingChart(SampleData.CreateBranchRatings(), new StarRatingParams(starSize: 22, rowHeight: 30,
+                width: 460, showPercentage: true, fillColor: "#FF9800", borderColor: "#E65100",
+                countFormatter: count => count.ToString("N0", CultureInfo.InvariantCulture))).GenerateSvg()
         };
     }
 }

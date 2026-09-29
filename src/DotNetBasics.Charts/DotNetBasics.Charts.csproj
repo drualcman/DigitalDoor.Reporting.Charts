@@ -7,16 +7,17 @@
 		<PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
 		<Authors>Sergi Ortiz Gomez</Authors>
 		<Company>DrUalcman Programacion</Company>
-		<Description>Simple charts (Bars, Columns, Pie, Lines, Ring percentage) generated as SVG from .NET code. Works in any .NET application: ASP.NET Core, Blazor Server, Blazor WebAssembly, MVC, console apps and PDF or HTML reports.</Description>
+		<Description>Simple charts (Bars, Columns, Pie, Lines, Area, Ring percentage, Star rating) generated as SVG from .NET code. Works in any .NET application: ASP.NET Core, Blazor Server, Blazor WebAssembly, MVC, console apps and PDF or HTML reports.</Description>
 		<Copyright>Free</Copyright>
 		<PackageProjectUrl>https://github.com/drualcman/DigitalDoor.Reporting.Charts</PackageProjectUrl>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
-		<PackageTags>charts;svg;pie;bars;columns;lines;ring;percentage;reports;pdf;blazor;blazor server;blazor webassembly;MVC;webapi;console</PackageTags>
+		<PackageTags>charts;svg;pie;bars;columns;lines;area;ring;percentage;stars;rating;reports;pdf;blazor;blazor server;blazor webassembly;MVC;webapi;console</PackageTags>
 		<RepositoryUrl>https://github.com/drualcman/DigitalDoor.Reporting.Charts</RepositoryUrl>
 		<PackageReleaseNotes>
+			2026-09-31: Add AreaChart and StarRatingChart.
 			2026-09-30: First release. Bar, column, stacked bar, pie, ring percentage, line and column with line charts generated as static SVG, with no animations or user interaction. Same parameters as BlazorBasics.Charts, with the title and legends inside the SVG.
 		</PackageReleaseNotes>
-		<Version>1.0.0</Version>
+		<Version>1.1.0</Version>
 		<Title>Simple SVG charts for .NET</Title>
 		<PackageId>DotNetBasics.Charts</PackageId>
 		<RepositoryType>git</RepositoryType>

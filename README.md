@@ -2,7 +2,7 @@
 [![Nuget](https://img.shields.io/nuget/dt/DotNetBasics.Charts?style=for-the-badge)](https://www.nuget.org/packages/DotNetBasics.Charts)
 
 # Description
-Simple charts generated as SVG from .NET code: bar, column, stacked bar, pie, ring percentage, line and column with line charts.
+Simple charts generated as SVG from .NET code: bar, column, stacked bar, pie, ring percentage, line, area, column with line and star rating charts.
 It has no dependencies and works in any .NET application: ASP.NET Core, Blazor Server, Blazor WebAssembly, MVC, Web API and console apps.
 
 Every chart returns an SVG `string`. You can save it as a file, return it from an API, write it in a web page, or use it as an image in a PDF or HTML report
@@ -138,6 +138,87 @@ public LineChartParams(int width = 600, int height = 300, string backgroundColor
 public LineChartPointOptions(bool visibleAllPoints = false, bool visibleMaxPoint = true, bool visibleMinPoint = true,
     bool visibleMaxPointLine = false, bool visibleMinPointLine = false)
 ```
+
+## Area chart
+The categories go along the X axis (the `Name` of every segment is its label) and the values along the Y axis, up to the highest value.
+The area is filled from the baseline to the line that joins the points, and the line is drawn over it.
+```csharp
+List<ChartSegment> visits =
+[
+    new ChartSegment("Jan", 120),
+    new ChartSegment("Feb", 180),
+    new ChartSegment("Mar", 150),
+    new ChartSegment("Apr", 260)
+];
+
+string area = new AreaChart(visits, new AreaChartParams(showValues: true, title: "Monthly visits")).GenerateSvg();
+```
+``` csharp
+public AreaChartParams(
+    int width = 600,
+    int height = 300,                 // the title is inside this height
+    string backgroundColor = "transparent",
+    string areaFill = "#4E79A7",
+    double areaOpacity = 0.4,         // 0 to 1
+    string lineStroke = "#2F5B85",    // also the colour of the points
+    int lineWidth = 2,                // 0 = no line
+    bool showPoints = true,
+    int dotRadius = 4,
+    bool showValues = false,          // the value over every point
+    bool showLabels = true,           // the category labels under the X axis
+    bool rotatedLabels = false,
+    double labelRotationAngle = 45,   // 0 to 90 degrees
+    int stepsY = 3,                   // ticks of the value axis, as in the line chart
+    bool showYAxis = true,
+    bool showGridLines = true,
+    string axisColor = "#333333",
+    string gridLineColor = "#DDDDDD",
+    string title = "",                // written inside the SVG when it is not empty
+    int labelFontSize = 12,
+    int titleFontSize = 16,
+    Func<double, string> valueFormatter = null,   // values and value axis
+    string fontFamily = ChartFonts.DefaultFamily)
+```
+* The value axis starts at 0, or below 0 when there are negative values, and uses rounded ticks.
+* With one single value the area is a flat band across the chart. Without values only the axes are drawn.
+* The labels are rotated when `rotatedLabels` is on or when they do not fit; otherwise they are shortened with an ellipsis.
+
+## Star rating
+One row per item with its label, the stars, the count and, optionally, the percentage. Ratings with decimals fill part of a star.
+```csharp
+List<StarRatingItem> ratings =
+[
+    new StarRatingItem("Excellent", 5, 128),
+    new StarRatingItem("Very good", 4, 64),
+    new StarRatingItem("Average", 3.5, 22),
+    new StarRatingItem("Poor", 2, 9, percentage: 4)
+];
+
+string stars = new StarRatingChart(ratings, new StarRatingParams(showPercentage: true, title: "Customer reviews")).GenerateSvg();
+```
+``` csharp
+public StarRatingItem(string label, double stars, double count, double? percentage = null)
+
+public StarRatingParams(
+    int starCount = 5,
+    int starSize = 16,
+    string fillColor = "#FFD700",
+    string emptyColor = "#E0E0E0",
+    string borderColor = "#B8860B",
+    bool showCount = true,
+    bool showPercentage = false,
+    int rowHeight = 24,              // grows when the stars or the text do not fit
+    int width = 400,                 // grows when the stars and numbers do not fit
+    int labelFontSize = 12,
+    string title = "",               // written inside the SVG when it is not empty
+    int titleFontSize = 16,
+    Func<double, string> countFormatter = null,
+    Func<double, string> percentageFormatter = null,   // receives 0 to 100
+    string fontFamily = ChartFonts.DefaultFamily)
+```
+* `Stars` is clamped between 0 and `starCount`. A star is partially filled with an SVG `clipPath`, with a stable id, so it works in browsers, PDF and image converters.
+* The percentage of every row is `Count` divided by the total of all the counts, unless `Percentage` is given. By default it is written as `56.39%`.
+* The count and the percentage are right aligned, and long labels are shortened with an ellipsis.
 
 ## Column with lines
 ```csharp
