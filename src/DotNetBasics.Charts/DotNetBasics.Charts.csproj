@@ -1,0 +1,36 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFrameworks>net6.0;net8.0;net9.0;net10.0</TargetFrameworks>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+		<PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+		<Authors>Sergi Ortiz Gomez</Authors>
+		<Company>DrUalcman</Company>
+		<Description>Simple charts (Bars, Columns, Pie, Lines, Ring percentage) generated as SVG from .NET code. Works in any .NET application: ASP.NET Core, Blazor Server, Blazor WebAssembly, MVC, console apps and PDF or HTML reports.</Description>
+		<Copyright>Free</Copyright>
+		<PackageProjectUrl>https://github.com/drualcman/DotNetBasics.Charts</PackageProjectUrl>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<PackageTags>charts;svg;pie;bars;columns;lines;ring;percentage;reports;pdf;blazor;blazor server;blazor webassembly;MVC;webapi;console</PackageTags>
+		<RepositoryUrl>https://github.com/drualcman/DotNetBasics.Charts</RepositoryUrl>
+		<PackageReleaseNotes>
+			2025-12-15: First release.
+		</PackageReleaseNotes>
+		<Version>1.17.70</Version>
+		<Title>Simple SVG charts for .NET</Title>
+		<PackageId>DotNetBasics.Charts</PackageId>
+		<RepositoryType>git</RepositoryType>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Include="..\..\LICENSE.txt">
+			<Pack>True</Pack>
+			<PackagePath></PackagePath>
+		</None>
+		<None Include="..\..\README.md">
+			<Pack>True</Pack>
+			<PackagePath></PackagePath>
+		</None>
+	</ItemGroup>
+
+</Project>
