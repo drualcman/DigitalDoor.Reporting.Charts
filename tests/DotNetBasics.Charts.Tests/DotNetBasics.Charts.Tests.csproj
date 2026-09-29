@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFrameworks>net8.0;net9.0;net10.0</TargetFrameworks>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<IsPackable>false</IsPackable>
+		<IsTestProject>true</IsTestProject>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.10.1" />
+		<PackageReference Include="SkiaSharp" Version="4.153.0" />
+		<PackageReference Include="Svg.Skia" Version="5.2.3" />
+		<PackageReference Include="xunit" Version="2.9.3" />
+		<PackageReference Include="xunit.runner.visualstudio" Version="3.1.5" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\src\DotNetBasics.Charts\DotNetBasics.Charts.csproj" />
+		<Compile Include="..\..\samples\DotNetBasics.Charts.Samples\SampleData.cs" Link="Support\SampleData.cs" />
+		<Compile Include="..\..\samples\DotNetBasics.Charts.Samples\SampleCharts.cs" Link="Support\SampleCharts.cs" />
+	</ItemGroup>
+
+</Project>

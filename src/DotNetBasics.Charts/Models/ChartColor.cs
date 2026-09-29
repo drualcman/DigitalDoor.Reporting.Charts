@@ -1,16 +1,11 @@
-﻿using DotNetBasics.Charts.Helpers;
-
 namespace DotNetBasics.Charts.Models;
 
 public class ChartColor
 {
-    public string Background { get; set; }
-    public string Foreground { get; set; }
-
     public ChartColor(string background)
     {
         Background = background;
-        Foreground = GetContrastingColor(background);
+        Foreground = ColourContrast.GetContrastingColour(background);
     }
 
     public ChartColor(string background, string foreground)
@@ -19,17 +14,6 @@ public class ChartColor
         Foreground = foreground;
     }
 
-    private string GetContrastingColor(string color)
-    {
-        string hexColour;
-        if (color.StartsWith("#"))
-            hexColour = ChartColourHelper.InvertHexColor(color);
-        else if (color.StartsWith("rgb"))
-            hexColour = ChartColourHelper.InvertHexColor(ChartColourHelper.RgbToHex(color));
-        else if (color.StartsWith("hsl"))
-            hexColour = ChartColourHelper.InvertHexColor(ChartColourHelper.HslToHex(color));
-        else
-            hexColour = color;
-        return hexColour;
-    }
+    public string Background { get; set; }
+    public string Foreground { get; set; }
 }

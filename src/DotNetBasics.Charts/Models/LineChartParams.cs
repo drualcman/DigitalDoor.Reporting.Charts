@@ -1,62 +1,82 @@
-﻿namespace DotNetBasics.Charts.Models;
+namespace DotNetBasics.Charts.Models;
 
-public class LineChartParams(
-    int width = 600,
-    int height = 300,
-    string backgroundColor = "transparent",
-    string axisStroke = "black",
-    int axisWidth = 2,
-    string gridLineStroke = "black",
-    int gridWidth = 1,
-    string lineSeriesFill = "none",
-    int lineSeriesWidth = 1,
-    int dotRadius = 4,
-    int stepsY = 3,
-    bool showX = true,
-    bool showY = true,
-    bool showLegend = true,
-    bool rotatedXLabels = false,
-    double rotationAngleXLabel = 45,
-    Func<string, string> formatterLabelPopup = null,
-    Func<LineData, string> legendLabel = null,
-    LineChartPointOptions pointOptions = null,
-    int maxPointPerLine = 50,
-    bool showLoading = true,
-    bool showXLines = true,
-    bool showYLines = true
-    )
+public class LineChartParams
 {
-    public int Width => width;
-    public int Height => height;
-    public string BackgroundColor => backgroundColor;
-    public string AxisStroke => axisStroke;
-    public int AxisWidth => axisWidth;
-    public string GridLineStroke => gridLineStroke;
-    public int GridWidth => gridWidth;
-    public string LineSeriesFill => lineSeriesFill;
-    public int LineSeriesWidth => lineSeriesWidth;
-    public int DotRadius => dotRadius;
-    public int StepsY => stepsY;
-    public bool ShowX => showX;
-    public bool ShowY => showY;
-    public bool ShowLegend => showLegend;
-    public bool RotatedXLabels => rotatedXLabels;
-    public double RotationAngleXLabel
+    public LineChartParams(
+        int width = 600,
+        int height = 300,
+        string backgroundColor = "transparent",
+        string axisStroke = "black",
+        int axisWidth = 2,
+        string gridLineStroke = "black",
+        int gridWidth = 1,
+        string lineSeriesFill = "none",
+        int lineSeriesWidth = 1,
+        int dotRadius = 4,
+        int stepsY = 3,
+        bool showX = true,
+        bool showY = true,
+        bool showLegend = true,
+        bool rotatedXLabels = false,
+        double rotationAngleXLabel = 45,
+        Func<LineData, string> legendLabel = null,
+        LineChartPointOptions pointOptions = null,
+        int maxPointPerLine = 50,
+        bool showXLines = true,
+        bool showYLines = true,
+        int fontSize = 12,
+        string fontFamily = ChartFonts.DefaultFamily)
     {
-        get
+        if (rotationAngleXLabel < 0 || rotationAngleXLabel > 90)
         {
-            if (rotationAngleXLabel < 0)
-                throw new ArgumentException($"Must be positive", nameof(RotationAngleXLabel));
-            if (rotationAngleXLabel > 90)
-                throw new ArgumentException($"Must be less than 90", nameof(RotationAngleXLabel));
-            return rotationAngleXLabel;
+            throw new ArgumentOutOfRangeException(nameof(rotationAngleXLabel), rotationAngleXLabel, "Must be between 0 and 90 degrees.");
         }
+        Width = width;
+        Height = height;
+        BackgroundColor = backgroundColor;
+        AxisStroke = axisStroke;
+        AxisWidth = axisWidth;
+        GridLineStroke = gridLineStroke;
+        GridWidth = gridWidth;
+        LineSeriesFill = lineSeriesFill;
+        LineSeriesWidth = lineSeriesWidth;
+        DotRadius = dotRadius;
+        StepsY = stepsY;
+        ShowX = showX;
+        ShowY = showY;
+        ShowLegend = showLegend;
+        RotatedXLabels = rotatedXLabels;
+        RotationAngleXLabel = rotationAngleXLabel;
+        LegendLabel = legendLabel;
+        PointOptions = pointOptions ?? new LineChartPointOptions();
+        MaxPointPerLine = maxPointPerLine;
+        ShowXLines = showXLines;
+        ShowYLines = showYLines;
+        FontSize = fontSize;
+        FontFamily = fontFamily;
     }
-    public Func<string, string> FormatterLabelPopup => formatterLabelPopup;
-    public Func<LineData, string> LegendLabel => legendLabel;
-    public LineChartPointOptions PointOptions { get; } = pointOptions ?? new LineChartPointOptions();
-    public int MaxPointPerLine => maxPointPerLine;
-    public bool ShowLoading => showLoading;
-    public bool ShowYLines => showYLines;
-    public bool ShowXLines => showXLines;
+
+    public int Width { get; }
+    public int Height { get; }
+    public string BackgroundColor { get; }
+    public string AxisStroke { get; }
+    public int AxisWidth { get; }
+    public string GridLineStroke { get; }
+    public int GridWidth { get; }
+    public string LineSeriesFill { get; }
+    public int LineSeriesWidth { get; }
+    public int DotRadius { get; }
+    public int StepsY { get; }
+    public bool ShowX { get; }
+    public bool ShowY { get; }
+    public bool ShowLegend { get; }
+    public bool RotatedXLabels { get; }
+    public double RotationAngleXLabel { get; }
+    public Func<LineData, string> LegendLabel { get; }
+    public LineChartPointOptions PointOptions { get; }
+    public int MaxPointPerLine { get; }
+    public bool ShowXLines { get; }
+    public bool ShowYLines { get; }
+    public int FontSize { get; }
+    public string FontFamily { get; }
 }

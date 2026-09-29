@@ -1,16 +1,20 @@
-﻿namespace DotNetBasics.Charts.Models;
+namespace DotNetBasics.Charts.Models;
 
-public class LineChartPointOptions(
-    bool visibleAllPoints = false,
-    bool visibleMaxPoint = true,
-    bool visibleMinPoint = true,
-    bool visibleMaxPointLine = false,
-    bool visibleMinPointLine = false
-)
+public class LineChartPointOptions
 {
-    public bool VisibleAllPoints => visibleAllPoints;
-    public bool VisibleMaxPoint => visibleMaxPoint;
-    public bool VisibleMinPoint => visibleMinPoint;
-    public bool VisibleMaxPointLine => visibleMaxPointLine;
-    public bool VisibleMinPointLine => visibleMinPointLine;
+    public LineChartPointOptions(bool visibleAllPoints = false, bool visibleMaxPoint = true, bool visibleMinPoint = true,
+        bool visibleMaxPointLine = false, bool visibleMinPointLine = false)
+    {
+        VisibleAllPoints = visibleAllPoints;
+        VisibleMaxPoint = visibleMaxPoint;
+        VisibleMinPoint = visibleMinPoint;
+        VisibleMaxPointLine = visibleMaxPointLine;
+        VisibleMinPointLine = visibleMinPointLine;
+    }
+
+    public bool VisibleAllPoints { get; }
+    public bool VisibleMaxPoint { get; }
+    public bool VisibleMinPoint { get; }
+    public bool VisibleMaxPointLine { get; }
+    public bool VisibleMinPointLine { get; }
 }

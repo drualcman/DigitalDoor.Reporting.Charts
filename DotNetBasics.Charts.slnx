@@ -1,3 +1,11 @@
 <Solution>
-  <Project Path="src/DotNetBasics.Charts/DotNetBasics.Charts.csproj" />
+  <Folder Name="/samples/">
+    <Project Path="samples/DotNetBasics.Charts.Samples/DotNetBasics.Charts.Samples.csproj" />
+  </Folder>
+  <Folder Name="/src/">
+    <Project Path="src/DotNetBasics.Charts/DotNetBasics.Charts.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/DotNetBasics.Charts.Tests/DotNetBasics.Charts.Tests.csproj" />
+  </Folder>
 </Solution>

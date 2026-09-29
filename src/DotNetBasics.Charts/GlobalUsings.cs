@@ -1,4 +1,13 @@
 global using DotNetBasics.Charts.Helpers;
 global using DotNetBasics.Charts.Models;
+global using DotNetBasics.Charts.Rendering.Bars;
+global using DotNetBasics.Charts.Rendering.Columns;
+global using DotNetBasics.Charts.Rendering.ColumnsWithLines;
+global using DotNetBasics.Charts.Rendering.Legends;
+global using DotNetBasics.Charts.Rendering.Lines;
+global using DotNetBasics.Charts.Rendering.Pies;
+global using DotNetBasics.Charts.Rendering.Rings;
+global using DotNetBasics.Charts.Rendering.StackedBars;
+global using DotNetBasics.Charts.Svg;
 global using System.Globalization;
 global using System.Text;

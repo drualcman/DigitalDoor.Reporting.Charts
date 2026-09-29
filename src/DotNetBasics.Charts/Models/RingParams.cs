@@ -1,17 +1,10 @@
-﻿namespace DotNetBasics.Charts.Models;
+namespace DotNetBasics.Charts.Models;
+
 public class RingParams
 {
-    public int Width { get; init; }
-    public int Height { get; init; }
-    public double FontSizeRatio { get; init; }
-    public string LabelColor { get; init; }
-    public string FromColor { get; init; }
-    public string ToColor { get; init; }
-    public string CircunferenceColour { get; init; }
-    public int StrokeWidth { get; init; }
-
     public RingParams(int width = 120, int height = 120, double fontPerspective = 3.5, string labelColor = "green",
-        string fromColor = "#FFD700", string toColor = "#B22222", string circunferenceColour = "#eee", int strokeWidth = 10)
+        string fromColor = "#FFD700", string toColor = "#B22222", string circunferenceColour = "#eee", int strokeWidth = 10,
+        string fontFamily = ChartFonts.DefaultFamily)
     {
         Width = width;
         Height = height;
@@ -21,5 +14,16 @@ public class RingParams
         ToColor = toColor;
         CircunferenceColour = circunferenceColour;
         StrokeWidth = strokeWidth;
+        FontFamily = fontFamily;
     }
+
+    public int Width { get; init; }
+    public int Height { get; init; }
+    public double FontSizeRatio { get; init; }
+    public string LabelColor { get; init; }
+    public string FromColor { get; init; }
+    public string ToColor { get; init; }
+    public string CircunferenceColour { get; init; }
+    public int StrokeWidth { get; init; }
+    public string FontFamily { get; init; }
 }

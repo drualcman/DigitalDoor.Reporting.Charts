@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<TargetFramework>net10.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<IsPackable>false</IsPackable>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\src\DotNetBasics.Charts\DotNetBasics.Charts.csproj" />
+		<PackageReference Include="SkiaSharp" Version="4.153.0" />
+		<PackageReference Include="Svg.Skia" Version="5.2.3" />
+	</ItemGroup>
+
+</Project>
